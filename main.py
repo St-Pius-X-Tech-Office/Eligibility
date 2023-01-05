@@ -69,8 +69,8 @@ emails.main()
 main()
 
 # Write the dataframes to our CSV files
-one_df.to_csv("Test 1 fail.csv", index=False)
-two_df.to_csv("Test 2 fail.csv", index=False)
+one_df.to_csv("One Fail List.csv", index=False)
+two_df.to_csv("Two or More Fail List.csv", index=False)
 
 # For me :)
-print("You did it ya big lug...")
+print("Process Completed")
