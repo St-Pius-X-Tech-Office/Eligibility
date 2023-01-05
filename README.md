@@ -30,4 +30,3 @@ python3 main.py
 ```
 
 Assuming no errors, you will see the 2 CSV files in the current directory. This means that you are done and can email them to the appropriate parties.
-
