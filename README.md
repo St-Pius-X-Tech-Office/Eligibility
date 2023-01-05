@@ -14,11 +14,10 @@ Things you will need to have installed:
 
 Before running the scripts, you will need to go to [Blackbaud](stpiusx.myschoolapp.com) and download the reports, of which there are 2.
 
-They are both reports under the *academic* tab. The first one is a variation of the following name:
+They are both reports under the **Academic** tab.
+The first is a variation of the following name: *Eligibility (Q1)/(Q2)/(Q3)*
 
-* Eligibility (Q1)/(Q2)/(Q3)
-
-Once you locate it, ensure the school year is correct and save it in the same folder as the scripts, and name the file "grades.csv".
+Once you locate it, ensure the school year is correct and save the file in the same folder as the scripts, and use the name "grades.csv".
 
 The second script is called *students/parents*. Again, ensure that the year is correct, and save the file in the same folder as the scripts and name it "emails.csv".
 
