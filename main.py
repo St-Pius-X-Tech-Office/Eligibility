@@ -1,76 +1,84 @@
 import pandas as pd
+
+
 import emails
+import grades
 
-One_Fail_Columns = [
+Main_Columns = [
+    "Fail Count Tracker",
     "Student Name",
     "Parent Name",
-    "Course",
-    "Grade",
     "Emails",
+    "Course1",
+    "Grade1",
 ]
 
-Two_Fail_Columns = [
-    "Student Name",
-    "Parent Name",
-    "Course",
-    "Grade",
-    "Emails",
-]
 
-one_df = pd.DataFrame(columns=One_Fail_Columns)
-two_df = pd.DataFrame(columns=Two_Fail_Columns)
+main_df = pd.DataFrame(columns=Main_Columns)
 
 masterList = pd.read_csv("grades.csv")
 
-count = {}
+seen = []
+ids = []
 
-# Run a for loop to count how many times a student appears in the list
-# This will allow us to split student who have > 1 failing grade.
 for i in range(len(masterList)):
-    id = masterList.loc[i, "Student ID"]
+    student_ID = masterList.loc[i, "Student ID"]
 
-    if id not in count:
-        count[id] = 1
-    else:
-        count[id] += 1
+    if student_ID not in ids:
+        ids.append(student_ID)
 
 
 def main():
 
+    count = 0
     for i in range(len(masterList)):
-        id = masterList.loc[i, "Student ID"]
+        student_ID = masterList.loc[i, "Student ID"]
 
-        # Write to the one list if the student only is listed once
-        if count[id] == 1:
-            one_df.loc[-1] = [
-                masterList.loc[i, "Student name"],
-                masterList.loc[i, "Parents/Guardians"],
-                masterList.loc[i, "Section ID"],
-                masterList.loc[i, "Cumulative gradebook grade"],
-                emails.email_Dict[id],
-            ]
-            one_df.index += 1
-            one_df.sort_index()
+        if len(grades.student_list[student_ID]) > 2:
+            count = 1
         else:
-            two_df.loc[-1] = [
+            count = 0
+
+        if student_ID not in seen:
+            main_df.loc[-1] = [
+                count,
                 masterList.loc[i, "Student name"],
                 masterList.loc[i, "Parents/Guardians"],
-                masterList.loc[i, "Section ID"],
-                masterList.loc[i, "Cumulative gradebook grade"],
-                emails.email_Dict[id],
+                emails.email_Dict[student_ID],
+                grades.student_list[student_ID][0],
+                grades.student_list[student_ID][1],
             ]
-            two_df.index += 1
-            two_df.sort_index()
+            main_df.index += 1
+            main_df.sort_index()
+            seen.append(student_ID)
+        else:
+            pass
+
+
+def addColumns():
+    main_df["Course2"] = grades.course2
+    main_df["Grade2"] = grades.grade2
+    main_df["Course3"] = grades.course3
+    main_df["Grade3"] = grades.grade3
+    main_df["Course4"] = grades.course4
+    main_df["Grade4"] = grades.grade4
+    main_df["Course5"] = grades.course5
+    main_df["Grade5"] = grades.grade5
+    main_df["Course6"] = grades.course6
+    main_df["Grade6"] = grades.grade6
+    main_df["Course7"] = grades.course7
+    main_df["Grade7"] = grades.grade7
 
 
 # Run the email script
 emails.main()
-# Run the main script above
+
+# Run the functions above
 main()
+addColumns()
 
 # Write the dataframes to our CSV files
-one_df.to_csv("One Fail List.csv", index=False)
-two_df.to_csv("Two or More Fail List.csv", index=False)
+main_df.to_csv("Masterlist.csv", index=False)
 
-# For me :)
+# Terminal message showing completion
 print("Process Completed")
