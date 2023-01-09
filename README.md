@@ -17,6 +17,12 @@ Before running the scripts, you will need to go to [Blackbaud](stpiusx.myschoola
 They are both reports under the **Academic** tab.
 The first is a variation of the following name: *Eligibility (Q1)/(Q2)/(Q3)*
 
+---
+
+#### **NOTE:** Be sure to select the correct list. RC indicates report card, while PR indicates progress report.
+
+---
+
 Once you locate it, ensure the school year is correct and save the file in the same folder as the scripts, and use the name "grades.csv".
 
 The second script is called *students/parents*. Again, ensure that the year is correct, and save the file in the same folder as the scripts and name it "emails.csv".
