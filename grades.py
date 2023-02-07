@@ -22,7 +22,7 @@ def main():
     for i in range(len(grade_List)):
         student_id = grade_List.loc[i, "Student ID"]
         course = grade_List.loc[i, "Course title"]
-        grade = grade_List.loc[i, "Cumulative gradebook grade"]
+        grade = grade_List.loc[i, "Numeric grade"]
 
         if student_id not in student_list:
             student_list[student_id] = []
