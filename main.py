@@ -1,6 +1,4 @@
 import pandas as pd
-
-
 import emails
 import grades
 
@@ -20,6 +18,7 @@ masterList = pd.read_csv("grades.csv")
 
 seen = []
 ids = []
+
 
 for i in range(len(masterList)):
     student_ID = masterList.loc[i, "Student ID"]
